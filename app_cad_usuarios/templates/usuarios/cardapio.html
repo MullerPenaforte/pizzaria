@@ -1,0 +1,102 @@
+{% extends 'usuarios/base.html' %}
+{% block conteudo %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pizzaria Delícia</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .item {
+      width: 300px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    h2 {
+      margin-top: 0;
+    }
+    
+    button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff9800;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="text-center">
+    <h1>Bem-vindo à nossa Pizzaria!</h1>
+    <p>Faça Login para efetuar pedidos. Não é nosso cliente? Faça um cadastro rápido e tenha acesso as nossas deliciosas pizzas.</p>
+  </div>
+  <div class="container">
+    <div class="item">
+      <h2>Pizza de Calabresa</h2>
+      <p>Deliciosa pizza de calabresa com queijo e molho de tomate.</p>
+      <img src="/app_cad_usuarios/assets/calabresa.jpg" alt="Pizza de Calabresa">
+    </div>
+    
+    <div class="item">
+      <h2>Pizza Margherita</h2>
+      <p>Clássica pizza margherita com queijo, tomate e manjericão.</p>
+      <img src="margherita.jpg" alt="Pizza Margherita">
+    </div>
+    
+    <div class="item">
+      <h2>Pizza Quatro Queijos</h2>
+      <p>Pizza irresistível com quatro tipos de queijo: muçarela, gorgonzola, provolone e parmesão.</p>
+      <img src="quatro_queijos.jpg" alt="Pizza Quatro Queijos">
+    </div>
+    
+    <div class="item">
+      <h2>Pizza Portuguesa</h2>
+      <p>Pizza tradicional portuguesa com mussarela, presunto, cebola, ovo e azeitonas.</p>
+      <img src="portuguesa.jpg" alt="Pizza Portuguesa">
+    </div>
+    
+    <div class="item">
+      <h2>Pizza Vegetariana</h2>
+      <p>Pizza saudável e saborosa com uma variedade de vegetais frescos.</p>
+      <img src="vegetariana.jpg" alt="Pizza Vegetariana">
+    </div>
+    
+    <div class="item">
+      <h2>Pizza Frango com Catupiry</h2>
+      <p>Pizza deliciosa com frango desfiado e muito catupiry cremoso.</p>
+      <img src="frango_catupiry.jpg" alt="Pizza Frango com Catupiry">
+    </div>
+    
+    <div class="item">
+      <h2>Bebida Refrigerante</h2>
+      <p>Refrescante refrigerante para acompanhar sua pizza.</p>
+      <img src="refrigerante.jpg" alt="Refrigerante">
+    </div>
+    
+    <div class="item">
+      <h2>Bebida Suco de Laranja</h2>
+      <p>Delicioso suco de laranja natural para uma opção mais saudável.</p>
+      <img src="suco_laranja.jpg" alt="Suco de Laranja">
+    </div>
+  </div>
+
+  
+  
+</body>
+</html>
+
+{% endblock %}
