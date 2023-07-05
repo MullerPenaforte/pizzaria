@@ -13,7 +13,13 @@ def cardapio(request):
     return render(request, 'usuarios/cardapio.html')
 
 def cardapio2(request):
-    return render(request, 'usuarios/cardapio2.html')
+    from django.shortcuts import render
+
+    
+    is_authenticated = request.user.is_authenticated
+    return render(request, 'usuarios/cardapio2.html', {'is_authenticated': is_authenticated})
+
+    
 
 def login(request):
     return render(request, 'usuarios/login.html')
@@ -39,3 +45,9 @@ def usuarios(request):
     }
     #Retornar os dados cadastros para 
     return render(request,'usuarios/usuarios.html', usuarios)
+
+from django.shortcuts import render
+
+def cardapio2(request):
+    is_logged_in = request.user.is_authenticated
+    return render(request, 'usuarios/cardapio2.html', {'is_logged_in': is_logged_in})

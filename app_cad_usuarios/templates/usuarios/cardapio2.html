@@ -1,13 +1,89 @@
 {% extends 'usuarios/base.html' %}
 {% block conteudo %}
 {% load static %}
+
+<nav class="navbar navbar-light" style="background-color: #a1c4fd;">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">
+      <a style="text-decoration: none; color: black;" href="{% url 'home' %}">Home</a> |
+      <a style="text-decoration: none; color: black;" href="{% url 'cadastro' %}">Cadastrar</a> |
+      {% if is_authenticated %}
+        |Login
+      {% else %}
+        <a style="text-decoration: none; color: black;" href="{% url 'login' %}">Logado </a> |
+      {% endif %}
+      <a style="text-decoration: none; color: black;" href="{% url 'cardapio' %}">Cardapio</a>
+    </span>
+  </div>
+</nav>
+
+<style>
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.item {
+  width: 300px;
+  margin-bottom: 50px;
+  padding: 10px;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+}
+
+.item h3 {
+  margin-top: 0;
+}
+
+.item p {
+  margin-bottom: 10px;
+}
+
+.item img {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.item-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#resumo-pedido {
+  margin-top: 10px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+#finalizar-pedido,
+#cancelar-pedido {
+  margin-top: 10px;
+}
+
+
+
+
+</style>
+
 <div class="container">
+  
   <h1 class="text-center mt-4">Carrinho de Compras</h1>
   <div class="row mt-5">
-    <div class="col-md-8">
-      <h4>Pizzas</h4>
-      <div class="item item-pizza">
-        <h2>Pizza Margherita</h2>
+
+    <div class="col-md-3">
+      <h2>Pizzas</h2>      
+      <div class="item">
+        <h3>Pizza Margherita</h3>
         <p>Deliciosa pizza com molho de tomate, queijo mozarela e manjericão fresco.</p>
         <img src="{% static 'margherita.jpg' %}" alt="Pizza Margherita" height="150px" width="200px">
         <div class="item-description">
@@ -19,21 +95,35 @@
           <button class="btn btn-danger remove-from-cart" data-product="Pizza Margherita">Remover do Carrinho</button>
         </div>
       </div>
-      <div class="item item-pizza">
-        <h2>Pizza Pepperoni</h2>
-        <p>Irresistível pizza com molho de tomate, queijo mozarela e pepperoni fatiado.</p>
-        <img src="{% static 'pepperoni.jpg' %}" alt="Pizza Pepperoni" height="150px" width="200px">
+      <div class="item">
+        <h3>Pizza Vegetariana</h3>
+        <p>Pizza saudável e saborosa com uma variedade de vegetais frescos.</p>
+        <img src="{% static 'vegetariana.jpg' %}" alt="Pizza Vegetariana" height="150px" width="200px">
         <div class="item-description">
-          <div class="item-name">Pizza Pepperoni</div>
+          <div class="item-name">Pizza Vegetariana</div>
+          <div class="item-price">R$ 18</div>
+        </div>
+        <div class="item-buttons">
+          <button class="btn btn-primary add-to-cart" data-product="Pizza Vegetariana" data-price="18">Adicionar ao Carrinho</button>
+          <button class="btn btn-danger remove-from-cart" data-product="Pizza Vegetariana">Remover do Carrinho</button>
+        </div>
+      </div>
+
+      <div class="item">
+        <h3>Pizza Portuguesa</h3>
+        <p>Pizza tradicional portuguesa com mussarela, presunto, cebola, ovo e azeitonas..</p>
+        <img src="{% static 'portuguesa.jpg' %}" alt="Pizza Portuguesa" height="150px" width="200px">
+        <div class="item-description">
+          <div class="item-name">Pizza Portuguesa</div>
           <div class="item-price">R$ 25</div>
         </div>
         <div class="item-buttons">
-          <button class="btn btn-primary add-to-cart" data-product="Pizza Pepperoni" data-price="25">Adicionar ao Carrinho</button>
-          <button class="btn btn-danger remove-from-cart" data-product="Pizza Pepperoni">Remover do Carrinho</button>
+          <button class="btn btn-primary add-to-cart" data-product="Pizza Portuguesa" data-price="25">Adicionar ao Carrinho</button>
+          <button class="btn btn-danger remove-from-cart" data-product="Pizza Portuguesa">Remover do Carrinho</button>
         </div>
       </div>
-      <div class="item item-pizza">
-        <h2>Pizza Calabresa</h2>
+      <div class="item">
+        <h3>Pizza Calabresa</h3>
         <p>Deliciosa pizza com molho de tomate, queijo mozarela e calabresa fatiada.</p>
         <img src="{% static 'calabresa.jpg' %}" alt="Pizza Calabresa" height="150px" width="200px">
         <div class="item-description">
@@ -45,10 +135,10 @@
           <button class="btn btn-danger remove-from-cart" data-product="Pizza Calabresa">Remover do Carrinho</button>
         </div>
       </div>
-      <div class="item item-pizza">
-        <h2>Pizza Quatro Queijos</h2>
+      <div class="item">
+        <h3>Pizza Quatro Queijos</h3>
         <p>Deliciosa pizza com molho de tomate, queijo mozarela, queijo cheddar, queijo gorgonzola e queijo parmesão.</p>
-        <img src="{% static 'quatro_queijos.jpg' %}" alt="Pizza Quatro Queijos" height="150px" width="200px">
+        <img src="{% static '4queijos.jpg' %}" alt="Pizza Quatro Queijos" height="150px" width="200px">
         <div class="item-description">
           <div class="item-name">Pizza Quatro Queijos</div>
           <div class="item-price">R$ 35</div>
@@ -58,37 +148,98 @@
           <button class="btn btn-danger remove-from-cart" data-product="Pizza Quatro Queijos">Remover do Carrinho</button>
         </div>
       </div>
-      
-      <h4 class="mt-5">Bebidas</h4>
-      <div class="item item-bebida">
-        <h2>Refrigerante Coca-Cola</h2>
-        <p>Refrigerante Coca-Cola gelado.</p>
-        <img src="{% static 'cocacola.jpg' %}" alt="Refrigerante Coca-Cola" height="150px" width="200px">
-        <div class="item-description">
-          <div class="item-name">Refrigerante Coca-Cola</div>
-          <div class="item-price">R$ 5</div>
-        </div>
-        <div class="item-buttons">
-          <button class="btn btn-primary add-to-cart" data-product="Refrigerante Coca-Cola" data-price="5">Adicionar ao Carrinho</button>
-          <button class="btn btn-danger remove-from-cart" data-product="Refrigerante Coca-Cola">Remover do Carrinho</button>
-        </div>
-      </div>
-      <div class="item item-bebida">
-        <h2>Suco de Laranja</h2>
-        <p>Suco de laranja natural.</p>
-        <img src="{% static 'laranja.jpg' %}" alt="Suco de Laranja" height="150px" width="200px">
-        <div class="item-description">
-          <div class="item-name">Suco de Laranja</div>
-          <div class="item-price">R$ 10</div>
-        </div>
-        <div class="item-buttons">
-          <button class="btn btn-primary add-to-cart" data-product="Suco de Laranja" data-price="10">Adicionar ao Carrinho</button>
-          <button class="btn btn-danger remove-from-cart" data-product="Suco de Laranja">Remover do Carrinho</button>
-        </div>
-      </div>
     </div>
+
+
+       <div class="col-md-3">
+
+        <h2 class="mt-5">Bebidas</h2>
+        <div class="item item-bebida">
+          <h3>Refrigerante 350ml</h3>
+          <p>Refrigerante 350ml gelado.</p>
+          <img src="{% static 'coca_lata.png' %}" alt="Refrigerante 350ml" height="150px" width="200px">
+          <div class="item-description">
+            <div class="item-name">Refrigerante 350ml</div>
+            <div class="item-price">R$ 5</div>
+          </div>
+          <div class="item-buttons">
+            <button class="btn btn-primary add-to-cart" data-product="Refrigerante 350ml" data-price="5">Adicionar ao Carrinho</button>
+            <button class="btn btn-danger remove-from-cart" data-product="Refrigerante 350ml">Remover do Carrinho</button>
+          </div>
+        </div>
+        <div class="item item-bebida">
+          <h3>Refrigerante 2L</h3>
+          <p>Refrigerante 2L gelado.</p>
+          <img src="{% static 'coca2l.png' %}" alt="Refrigerante 2L" height="150px" width="200px">
+          <div class="item-description">
+            <div class="item-name">Refrigerante 2L</div>
+            <div class="item-price">R$ 12</div>
+          </div>
+          <div class="item-buttons">
+            <button class="btn btn-primary add-to-cart" data-product="Refrigerante 2L" data-price="12">Adicionar ao Carrinho</button>
+            <button class="btn btn-danger remove-from-cart" data-product="Refrigerante 2L">Remover do Carrinho</button>
+          </div>
+        </div>
+        <div class="item item-bebida">
+          <h3>Suco de Laranja</h3>
+          <p>Suco de laranja natural.</p>
+          <img src="{% static 'laranja.png' %}" alt="Suco de Laranja" height="150px" width="200px">
+          <div class="item-description">
+            <div class="item-name">Suco de Laranja</div>
+            <div class="item-price">R$ 10</div>
+          </div>
+          <div class="item-buttons">
+            <button class="btn btn-primary add-to-cart" data-product="Suco de Laranja" data-price="10">Adicionar ao Carrinho</button>
+            <button class="btn btn-danger remove-from-cart" data-product="Suco de Laranja">Remover do Carrinho</button>
+          </div>
+        </div>
+        <div class="item item-bebida">
+          <h3>Suco de Uva</h3>
+          <p>Suco de Uva natural.</p>
+          <img src="{% static 'uva.png' %}" alt="Suco de Uva" height="150px" width="200px">
+          <div class="item-description">
+            <div class="item-name">Suco de Uva</div>
+            <div class="item-price">R$ 10</div>
+          </div>
+          <div class="item-buttons">
+            <button class="btn btn-primary add-to-cart" data-product="Suco de Uva" data-price="10">Adicionar ao Carrinho</button>
+            <button class="btn btn-danger remove-from-cart" data-product="Suco de Uva">Remover do Carrinho</button>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+      <h2 class="mt-5">Combos</h2>
+        <div class="item combo">
+          <h3>Combo1:</h3>
+          <p>Pizza Frango com Catupiry + 2 Refri. 350ml</p>
+          <img src="{% static 'combo1.jpg' %}" alt="Combo1" height="150px" width="200px">
+          <div class="item-description">
+            <div class="item-name">Pizza Frango com Catupiry  + 2 Refri. 350ml</div>
+            <div class="item-price">R$ 32</div>
+          </div>
+          <div class="item-buttons">
+            <button class="btn btn-primary add-to-cart" data-product="Combo1" data-price="32">Adicionar ao Carrinho</button>
+            <button class="btn btn-danger remove-from-cart" data-product="Combo1">Remover do Carrinho</button>
+          </div>
+        </div>
+        <div class="item combo">
+          <h3>Combo2</h3>
+          <p>2 Pizzas + 2 Refri 2L </p>
+          <img src="{% static 'combo2.jpg' %}" alt="Combo2" height="150px" width="200px">
+          <div class="item-description">
+            <div class="item-name">2 Pizzas + 2 Refri 2L</div>
+            <div class="item-price">R$ 55</div>
+          </div>
+          <div class="item-buttons">
+            <button class="btn btn-primary add-to-cart" data-product="Combo2" data-price="55">Adicionar ao Carrinho</button>
+            <button class="btn btn-danger remove-from-cart" data-product="Combo2">Remover do Carrinho</button>
+          </div>
+        </div>
+      </div>
+  
     
-    <div class="col-md-4">
+    <div class="col-md-3">
       <h4>Resumo do Pedido</h4>
       <div id="resumo-pedido">
         <!-- Aqui é onde os itens do carrinho e o total atualizado em tempo real aparecerão -->
@@ -111,7 +262,7 @@ $(document).ready(function() {
     resumoPedido.html('');
 
     for(var i = 0; i < carrinho.length; i++) {
-      total += carrinho[i].price;
+      total += carrinho[i].price;      
       resumoPedido.append('<p>' + carrinho[i].product + ' - R$ ' + carrinho[i].price + '</p>');
     }
 
@@ -146,5 +297,9 @@ $(document).ready(function() {
     $('#mensagem').html('<p class="text-danger">Pedido cancelado.</p>');
   });
 });
+
+ 
 </script>
+
+
 {% endblock %}
