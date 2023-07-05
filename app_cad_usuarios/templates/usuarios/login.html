@@ -32,11 +32,14 @@
     </style>
     </head>
     <body>
-    <h2 id="message">Entre com seus dados por favor</h2>
+    <h2 id="message">Entre com seus dados por favor.</h2>
     <form method="POST" action="/login">
         <input type="text" name="username" placeholder="Usuário" required>
         <input type="password" name="password" placeholder="Senha" required>
         <a href="{% url 'cardapio2' %}" class="btn btn-primary" onclick="checkFields(event)">Entrar</a>
+        <br>
+        <h5 id="message">Caso não seja cliente, realize um cadastro primeiro.</h5>
+        <h9 id="message"><a href="{% url 'cadastro' %}"> Cadastrar-se </a> </h9>
     </form>
     
     <script>
@@ -50,7 +53,7 @@
                 // Cancelar o evento de clique para evitar o redirecionamento
                 alert("Preencha usuário e senha!");
                 event.preventDefault();
-            } else if(username.trim() == "admin" && password.trim() == "admin") {
+            } else if(username.trim() == "joao@123" && password.trim() == "admin") {
                 // Redirecionar para o link especificado
                 window.location.href = event.target.getAttribute('href');
             }
