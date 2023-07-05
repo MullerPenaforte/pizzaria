@@ -50,9 +50,14 @@
                 // Cancelar o evento de clique para evitar o redirecionamento
                 alert("Preencha usuário e senha!");
                 event.preventDefault();
-            } else {
+            } else if(username.trim() == "admin" && password.trim() == "admin") {
                 // Redirecionar para o link especificado
                 window.location.href = event.target.getAttribute('href');
+            }
+            
+            else {
+                alert("Usuário ou senha incorreto.");
+                event.preventDefault();
             }
         }
     </script>

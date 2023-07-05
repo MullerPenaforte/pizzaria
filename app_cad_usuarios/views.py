@@ -26,12 +26,16 @@ def usuarios(request):
     # Salvar os dados da tela para o banco de dados
     novo_usuario = Usuario()
     novo_usuario.nome = request.POST.get('nome')
-    novo_usuario.cpf = request.POST.get('cpf')
+    novo_usuario.senha = request.POST.get('senha')
+    novo_usuario.email = request.POST.get('email')
+    novo_usuario.endereco = request.POST.get('endereco')
+    novo_usuario.telefone = request.POST.get('telefone')
     novo_usuario.save()
 
     #Exibir todos os usuarios ja cadastrados em um nova pagina
     usuarios = {
         'usuarios': Usuario.objects.all()
+        
     }
     #Retornar os dados cadastros para 
     return render(request,'usuarios/usuarios.html', usuarios)
