@@ -1,154 +1,150 @@
 {% extends 'usuarios/base.html' %}
 {% block conteudo %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Pizzaria Delícia</title>
-  <style>
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      max-width: auto;
-      margin: 0 auto;
-    }
-    
-    .item {
-      width: 300px;
-      margin-bottom: 50px;
-      padding: 10px;
-      border: 3px solid #ccc;
-      border-radius: 5px;
-    }
-    
-    h2 {
-      margin-top: 0;
-    }
-    
-    button {
-      display: block;
-      margin: 0 auto;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background-color: #ff9800;
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .small-input {
-    width: 40px; /* Ajuste o valor conforme necessário */
-  }
-
-    
-  </style>
-</head>
-<body>
-  <a href="{% url 'pedido' %}" class="btn btn-primary ">Finalizar pedido.</a>
-  <div class="text-center">
-    <h1>Bem-vindo à nossa Pizzaria!</h1>
-    <p>Faça Login para efetuar pedidos. Não é nosso cliente? Faça um cadastro rápido e tenha acesso as nossas deliciosas pizzas.</p>
-  </div>
-  <div class="container">
-    <div class="item">
-      <h2>Pizza de Calabresa</h2>
-      <p>Deliciosa pizza de calabresa com queijo e molho de tomate.</p>
-      <img src="/app_cad_usuarios/assets/calabresa.jpg" alt="Pizza de Calabresa">
-      <p>Quantidade: <input type="number" name="quantidade_calabresa" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_calabresa')">Adicionar ao pedido.</button>
+<div class="container">
+  <h1 class="text-center mt-4">Carrinho de Compras</h1>
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <h4>Pizzas</h4>
+      <div class="item item-pizza">
+        <h2>Pizza Margherita</h2>
+        <p>Deliciosa pizza com molho de tomate, queijo mozarela e manjericão fresco.</p>
+        <img src="{% static 'margherita.jpg' %}" alt="Pizza Margherita" height="150px" width="200px">
+        <div class="item-description">
+          <div class="item-name">Pizza Margherita</div>
+          <div class="item-price">R$ 20</div>
+        </div>
+        <div class="item-buttons">
+          <button class="btn btn-primary add-to-cart" data-product="Pizza Margherita" data-price="20">Adicionar ao Carrinho</button>
+          <button class="btn btn-danger remove-from-cart" data-product="Pizza Margherita">Remover do Carrinho</button>
+        </div>
+      </div>
+      <div class="item item-pizza">
+        <h2>Pizza Pepperoni</h2>
+        <p>Irresistível pizza com molho de tomate, queijo mozarela e pepperoni fatiado.</p>
+        <img src="{% static 'pepperoni.jpg' %}" alt="Pizza Pepperoni" height="150px" width="200px">
+        <div class="item-description">
+          <div class="item-name">Pizza Pepperoni</div>
+          <div class="item-price">R$ 25</div>
+        </div>
+        <div class="item-buttons">
+          <button class="btn btn-primary add-to-cart" data-product="Pizza Pepperoni" data-price="25">Adicionar ao Carrinho</button>
+          <button class="btn btn-danger remove-from-cart" data-product="Pizza Pepperoni">Remover do Carrinho</button>
+        </div>
+      </div>
+      <div class="item item-pizza">
+        <h2>Pizza Calabresa</h2>
+        <p>Deliciosa pizza com molho de tomate, queijo mozarela e calabresa fatiada.</p>
+        <img src="{% static 'calabresa.jpg' %}" alt="Pizza Calabresa" height="150px" width="200px">
+        <div class="item-description">
+          <div class="item-name">Pizza Calabresa</div>
+          <div class="item-price">R$ 30</div>
+        </div>
+        <div class="item-buttons">
+          <button class="btn btn-primary add-to-cart" data-product="Pizza Calabresa" data-price="30">Adicionar ao Carrinho</button>
+          <button class="btn btn-danger remove-from-cart" data-product="Pizza Calabresa">Remover do Carrinho</button>
+        </div>
+      </div>
+      <div class="item item-pizza">
+        <h2>Pizza Quatro Queijos</h2>
+        <p>Deliciosa pizza com molho de tomate, queijo mozarela, queijo cheddar, queijo gorgonzola e queijo parmesão.</p>
+        <img src="{% static 'quatro_queijos.jpg' %}" alt="Pizza Quatro Queijos" height="150px" width="200px">
+        <div class="item-description">
+          <div class="item-name">Pizza Quatro Queijos</div>
+          <div class="item-price">R$ 35</div>
+        </div>
+        <div class="item-buttons">
+          <button class="btn btn-primary add-to-cart" data-product="Pizza Quatro Queijos" data-price="35">Adicionar ao Carrinho</button>
+          <button class="btn btn-danger remove-from-cart" data-product="Pizza Quatro Queijos">Remover do Carrinho</button>
+        </div>
+      </div>
       
+      <h4 class="mt-5">Bebidas</h4>
+      <div class="item item-bebida">
+        <h2>Refrigerante Coca-Cola</h2>
+        <p>Refrigerante Coca-Cola gelado.</p>
+        <img src="{% static 'cocacola.jpg' %}" alt="Refrigerante Coca-Cola" height="150px" width="200px">
+        <div class="item-description">
+          <div class="item-name">Refrigerante Coca-Cola</div>
+          <div class="item-price">R$ 5</div>
+        </div>
+        <div class="item-buttons">
+          <button class="btn btn-primary add-to-cart" data-product="Refrigerante Coca-Cola" data-price="5">Adicionar ao Carrinho</button>
+          <button class="btn btn-danger remove-from-cart" data-product="Refrigerante Coca-Cola">Remover do Carrinho</button>
+        </div>
+      </div>
+      <div class="item item-bebida">
+        <h2>Suco de Laranja</h2>
+        <p>Suco de laranja natural.</p>
+        <img src="{% static 'laranja.jpg' %}" alt="Suco de Laranja" height="150px" width="200px">
+        <div class="item-description">
+          <div class="item-name">Suco de Laranja</div>
+          <div class="item-price">R$ 10</div>
+        </div>
+        <div class="item-buttons">
+          <button class="btn btn-primary add-to-cart" data-product="Suco de Laranja" data-price="10">Adicionar ao Carrinho</button>
+          <button class="btn btn-danger remove-from-cart" data-product="Suco de Laranja">Remover do Carrinho</button>
+        </div>
+      </div>
     </div>
     
-    <div class="item">
-      <h2>Pizza Margherita</h2>
-      <p>Clássica pizza margherita com queijo, tomate e manjericão.</p>
-      <img src="margherita.jpg" alt="Pizza Margherita">
-      <p>Quantidade: <input type="number" name="quantidade_margherita" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_margherita')">Adicionar ao pedido.</button>
-      
+    <div class="col-md-4">
+      <h4>Resumo do Pedido</h4>
+      <div id="resumo-pedido">
+        <!-- Aqui é onde os itens do carrinho e o total atualizado em tempo real aparecerão -->
+      </div>
+      <button id="finalizar-pedido" class="btn btn-success mt-3">Finalizar Pedido</button>
+      <button id="cancelar-pedido" class="btn btn-secondary mt-3">Cancelar Pedido</button>
+      <div id="mensagem"></div>
     </div>
-    
-    <div class="item">
-      <h2>Pizza Quatro Queijos</h2>
-      <p>Pizza irresistível com quatro tipos de queijo: muçarela, gorgonzola, provolone e parmesão.</p>
-      <img src="quatro_queijos.jpg" alt="Pizza Quatro Queijos">
-      <p>Quantidade: <input type="number" name="quantidade_quatroqueijos" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_quatroqueijos')">Adicionar ao pedido.</button>
-    </div>
-    
-    <div class="item">
-      <h2>Pizza Portuguesa</h2>
-      <p>Pizza tradicional portuguesa com mussarela, presunto, cebola, ovo e azeitonas.</p>
-      <img src="portuguesa.jpg" alt="Pizza Portuguesa">
-      <p>Quantidade: <input type="number" name="quantidade_portuguesa" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_portuguesa')">Adicionar ao pedido.</button>
-    </div>
-    
-    <div class="item">
-      <h2>Pizza Vegetariana</h2>
-      <p>Pizza saudável e saborosa com uma variedade de vegetais frescos.</p>
-      <img src="vegetariana.jpg" alt="Pizza Vegetariana">
-      <p>Quantidade: <input type="number" name="quantidade_vegetariana" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_vegetariana')">Adicionar ao pedido.</button>
-    </div>
-    
-    <div class="item">
-      <h2>Pizza Frango com Catupiry</h2>
-      <p>Pizza deliciosa com frango desfiado e muito catupiry cremoso.</p>
-      <img src="frango_catupiry.jpg" alt="Pizza Frango com Catupiry">
-      <p>Quantidade: <input type="number" name="quantidade_fcatupiry" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_fcatupiry')">Adicionar ao pedido.</button>
-    </div>
-    
-    <div class="item">
-      <h2>Bebida Refrigerante</h2>
-      <p>Refrescante refrigerante para acompanhar sua pizza.</p>
-      <img src="refrigerante.jpg" alt="Refrigerante">
-      <p>Quantidade: <input type="number" name="quantidade_refrigerante" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_refrigerante')">Adicionar ao pedido.</button>
-    </div>
-    
-    <div class="item">
-      <h2>Bebida Suco de Laranja</h2>
-      <p>Delicioso suco de laranja natural para uma opção mais saudável.</p>
-      <img src="suco_laranja.jpg" alt="Suco de Laranja">
-      <p>Quantidade: <input type="number" name="quantidade_laranja" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_laranja')">Adicionar ao pedido.</button>
-    </div>
-  
-
-  <div class="item">
-    <h2>Bebida Suco de Uva</h2>
-    <p>Delicioso suco de uva natural para uma opção mais saudável.</p>
-    <img src="suco_laranja.jpg" alt="Suco de Uva">
-    <p>Quantidade: <input type="number" name="quantidade_uva" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_uva')">Adicionar ao pedido.</button>
-  </div>
-
-
-  <div class="item">
-    <h2>Combo1: Pizza Calabresa + 2 Refri. 350ml </h2>
-    <p>Combo especial da casa para comer a pizza com 2 refris.</p>
-    <img src="suco_laranja.jpg" alt="Combo1">
-    <p>Quantidade: <input type="number" name="quantidade_combo1" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_combo1')">Adicionar ao pedido.</button>
-  </div>
-
-
-  <div class="item">
-    <h2>Combo2: Pizza vegetariana com Suco de Laranja + Suco de Uva </h2>
-    <p>Combo saudável.</p>
-    <img src="suco_laranja.jpg" alt="Combo2">
-    <p>Quantidade: <input type="number" name="quantidade_combo2" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_combo2')">Adicionar ao pedido.</button>
   </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  var carrinho = [];
 
-  
-</body>
-</html>
+  function atualizarCarrinho() {
+    var total = 0;
+    var resumoPedido = $('#resumo-pedido');
+    resumoPedido.html('');
 
+    for(var i = 0; i < carrinho.length; i++) {
+      total += carrinho[i].price;
+      resumoPedido.append('<p>' + carrinho[i].product + ' - R$ ' + carrinho[i].price + '</p>');
+    }
+
+    resumoPedido.append('<p>Total: R$ ' + total + '</p>');
+  }
+
+  $('.add-to-cart').click(function() {
+    var product = $(this).data('product');
+    var price = $(this).data('price');
+    carrinho.push({ product: product, price: price });
+
+    atualizarCarrinho();
+  });
+
+  $('.remove-from-cart').click(function() {
+    var product = $(this).data('product');
+    carrinho = carrinho.filter(function(item) {
+      return item.product !== product;
+    });
+
+    atualizarCarrinho();
+  });
+
+  $('#finalizar-pedido').click(function() {
+    $('#mensagem').html('<p class="text-success">Pedido finalizado com sucesso!</p>');
+    alert("Pedido finalizado com sucesso!");
+  });
+
+  $('#cancelar-pedido').click(function() {
+    carrinho = [];
+    atualizarCarrinho();
+    $('#mensagem').html('<p class="text-danger">Pedido cancelado.</p>');
+  });
+});
+</script>
 {% endblock %}
