@@ -27,6 +27,7 @@ urlpatterns = [
     #usarios.com/usuarios
     path('usuarios/',views.usuarios, name='listagem_usuarios'),
     path('cardapio/',views.cardapio, name='cardapio'),
+    path('cardapio2/',views.cardapio2, name='cardapio2'),
     path('login/',views.login, name='login'),
     path('cadastro/',views.cadastro, name='cadastro')
 ]

@@ -12,6 +12,9 @@ def cadastro(request):
 def cardapio(request):
     return render(request, 'usuarios/cardapio.html')
 
+def cardapio2(request):
+    return render(request, 'usuarios/cardapio2.html')
+
 def login(request):
     return render(request, 'usuarios/login.html')
 

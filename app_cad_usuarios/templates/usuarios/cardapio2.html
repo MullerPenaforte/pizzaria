@@ -37,6 +37,12 @@
       font-size: 16px;
       cursor: pointer;
     }
+
+    .small-input {
+    width: 40px; /* Ajuste o valor conforme necessário */
+  }
+
+    
   </style>
 </head>
 <body>
@@ -49,7 +55,10 @@
     <div class="item">
       <h2>Pizza de Calabresa</h2>
       <p>Deliciosa pizza de calabresa com queijo e molho de tomate.</p>
-      <img src="{% static 'calabresa.jpg' %}" alt="Pizza de Calabresa" height="150px" width="200px">
+      <img src="/app_cad_usuarios/assets/calabresa.jpg" alt="Pizza de Calabresa">
+      <p>Quantidade: <input type="number" name="quantidade_calabresa" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_calabresa')">Adcionar ao pedido.</button>
+      
     </div>
     
     <div class="item">

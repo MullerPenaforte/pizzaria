@@ -36,8 +36,27 @@
     <form method="POST" action="/login">
         <input type="text" name="username" placeholder="Usuário" required>
         <input type="password" name="password" placeholder="Senha" required>
-        <button type="submit">Entrar</button>
+        <a href="{% url 'cardapio2' %}" class="btn btn-primary" onclick="checkFields(event)">Entrar</a>
     </form>
+    
+    <script>
+        function checkFields(event) {
+            // Obter os valores dos campos de entrada
+            var username = document.querySelector('input[name="username"]').value;
+            var password = document.querySelector('input[name="password"]').value;
+    
+            // Verificar se os campos estão em branco
+            if (username.trim() === '' || password.trim() === '') {
+                // Cancelar o evento de clique para evitar o redirecionamento
+                alert("Preencha usuário e senha!");
+                event.preventDefault();
+            } else {
+                // Redirecionar para o link especificado
+                window.location.href = event.target.getAttribute('href');
+            }
+        }
+    </script>
+    
     </body>
     </html>
 {% endblock %}
