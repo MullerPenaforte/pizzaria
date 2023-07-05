@@ -46,7 +46,7 @@
   </style>
 </head>
 <body>
-
+  <a href="{% url 'pedido' %}" class="btn btn-primary ">Finalizar pedido.</a>
   <div class="text-center">
     <h1>Bem-vindo à nossa Pizzaria!</h1>
     <p>Faça Login para efetuar pedidos. Não é nosso cliente? Faça um cadastro rápido e tenha acesso as nossas deliciosas pizzas.</p>
@@ -57,7 +57,7 @@
       <p>Deliciosa pizza de calabresa com queijo e molho de tomate.</p>
       <img src="/app_cad_usuarios/assets/calabresa.jpg" alt="Pizza de Calabresa">
       <p>Quantidade: <input type="number" name="quantidade_calabresa" min="0" class="small-input"></p>
-      <button onclick="enviarQuantidade('quantidade_calabresa')">Adcionar ao pedido.</button>
+      <button onclick="enviarQuantidade('quantidade_calabresa')">Adicionar ao pedido.</button>
       
     </div>
     
@@ -65,46 +65,88 @@
       <h2>Pizza Margherita</h2>
       <p>Clássica pizza margherita com queijo, tomate e manjericão.</p>
       <img src="margherita.jpg" alt="Pizza Margherita">
+      <p>Quantidade: <input type="number" name="quantidade_margherita" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_margherita')">Adicionar ao pedido.</button>
+      
     </div>
     
     <div class="item">
       <h2>Pizza Quatro Queijos</h2>
       <p>Pizza irresistível com quatro tipos de queijo: muçarela, gorgonzola, provolone e parmesão.</p>
       <img src="quatro_queijos.jpg" alt="Pizza Quatro Queijos">
+      <p>Quantidade: <input type="number" name="quantidade_quatroqueijos" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_quatroqueijos')">Adicionar ao pedido.</button>
     </div>
     
     <div class="item">
       <h2>Pizza Portuguesa</h2>
       <p>Pizza tradicional portuguesa com mussarela, presunto, cebola, ovo e azeitonas.</p>
       <img src="portuguesa.jpg" alt="Pizza Portuguesa">
+      <p>Quantidade: <input type="number" name="quantidade_portuguesa" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_portuguesa')">Adicionar ao pedido.</button>
     </div>
     
     <div class="item">
       <h2>Pizza Vegetariana</h2>
       <p>Pizza saudável e saborosa com uma variedade de vegetais frescos.</p>
       <img src="vegetariana.jpg" alt="Pizza Vegetariana">
+      <p>Quantidade: <input type="number" name="quantidade_vegetariana" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_vegetariana')">Adicionar ao pedido.</button>
     </div>
     
     <div class="item">
       <h2>Pizza Frango com Catupiry</h2>
       <p>Pizza deliciosa com frango desfiado e muito catupiry cremoso.</p>
       <img src="frango_catupiry.jpg" alt="Pizza Frango com Catupiry">
+      <p>Quantidade: <input type="number" name="quantidade_fcatupiry" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_fcatupiry')">Adicionar ao pedido.</button>
     </div>
     
     <div class="item">
       <h2>Bebida Refrigerante</h2>
       <p>Refrescante refrigerante para acompanhar sua pizza.</p>
       <img src="refrigerante.jpg" alt="Refrigerante">
+      <p>Quantidade: <input type="number" name="quantidade_refrigerante" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_refrigerante')">Adicionar ao pedido.</button>
     </div>
     
     <div class="item">
       <h2>Bebida Suco de Laranja</h2>
       <p>Delicioso suco de laranja natural para uma opção mais saudável.</p>
       <img src="suco_laranja.jpg" alt="Suco de Laranja">
+      <p>Quantidade: <input type="number" name="quantidade_laranja" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_laranja')">Adicionar ao pedido.</button>
     </div>
+  
+
+  <div class="item">
+    <h2>Bebida Suco de Uva</h2>
+    <p>Delicioso suco de uva natural para uma opção mais saudável.</p>
+    <img src="suco_laranja.jpg" alt="Suco de Uva">
+    <p>Quantidade: <input type="number" name="quantidade_uva" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_uva')">Adicionar ao pedido.</button>
   </div>
 
-  
+
+  <div class="item">
+    <h2>Combo1: Pizza Calabresa + 2 Refri. 350ml </h2>
+    <p>Combo especial da casa para comer a pizza com 2 refris.</p>
+    <img src="suco_laranja.jpg" alt="Combo1">
+    <p>Quantidade: <input type="number" name="quantidade_combo1" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_combo1')">Adicionar ao pedido.</button>
+  </div>
+
+
+  <div class="item">
+    <h2>Combo2: Pizza vegetariana com Suco de Laranja + Suco de Uva </h2>
+    <p>Combo saudável.</p>
+    <img src="suco_laranja.jpg" alt="Combo2">
+    <p>Quantidade: <input type="number" name="quantidade_combo2" min="0" class="small-input"></p>
+      <button onclick="enviarQuantidade('quantidade_combo2')">Adicionar ao pedido.</button>
+  </div>
+</div>
+
+
   
 </body>
 </html>

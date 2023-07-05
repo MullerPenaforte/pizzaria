@@ -29,5 +29,6 @@ urlpatterns = [
     path('cardapio/',views.cardapio, name='cardapio'),
     path('cardapio2/',views.cardapio2, name='cardapio2'),
     path('login/',views.login, name='login'),
+    path('pedido/',views.pedido, name='pedido'),
     path('cadastro/',views.cadastro, name='cadastro')
 ]

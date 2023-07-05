@@ -18,6 +18,9 @@ def cardapio2(request):
 def login(request):
     return render(request, 'usuarios/login.html')
 
+def pedido(request):
+    return render(request, 'usuarios/pedido.html')
+
 
 def usuarios(request):
     # Salvar os dados da tela para o banco de dados
